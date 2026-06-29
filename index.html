@@ -6,416 +6,736 @@
 <title>Stress, Inflammation & MS — and Loving Well Through It</title>
 <style>
   :root{
-    --bg:#0f1724; --panel:#ffffff; --ink:#1f2733; --muted:#5b6675;
-    --accent:#2a7d9b; --accent2:#7b4fa3; --line:#e3e8ef; --soft:#f5f8fb;
-    --warn:#b4540a; --good:#2e7d4f;
+    --ink:#10212e; --muted:#5a6b7a; --panel:#ffffff; --bg:#eaf0f4;
+    --teal:#1f8aa6; --teal-d:#13647a; --violet:#7a4fb0; --violet-d:#5a3787;
+    --flame:#e0571a; --flame-soft:#f5a26b; --good:#1f8a5b; --line:#dde6ed;
+    --soft:#f4f8fb;
+    --ff-display:"Fraunces",Georgia,"Times New Roman",serif;
+    --ff-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --ff-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);line-height:1.62;background:#eef2f6;}
-  header{background:linear-gradient(135deg,#143b54,#2a7d9b 55%,#7b4fa3);color:#fff;padding:54px 22px 46px;}
-  header .wrap{max-width:920px;margin:0 auto;}
-  header h1{margin:0 0 10px;font-size:2.05rem;line-height:1.18;}
-  header p{margin:0;font-size:1.06rem;opacity:.94;max-width:680px;}
-  .tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
-    padding:4px 12px;border-radius:20px;font-size:.78rem;letter-spacing:.04em;margin-bottom:16px;text-transform:uppercase;}
-  nav{background:#0f2troublehic;position:sticky;top:0;z-index:20;}
-  nav{background:#11314a;}
-  nav .wrap{max-width:920px;margin:0 auto;padding:10px 22px;display:flex;flex-wrap:wrap;gap:6px 18px;}
-  nav a{color:#cfe3ee;text-decoration:none;font-size:.86rem;font-weight:600;}
-  nav a:hover{color:#fff;text-decoration:underline;}
-  main{max-width:920px;margin:0 auto;padding:10px 22px 60px;}
-  section{background:var(--panel);margin:26px 0;padding:30px 30px 26px;border-radius:14px;
-    box-shadow:0 2px 14px rgba(20,40,60,.07);}
-  h2{font-size:1.5rem;margin:0 0 6px;color:#143b54;border-bottom:3px solid var(--accent);
-    padding-bottom:8px;}
-  h2 .num{color:var(--accent2);font-weight:800;margin-right:8px;}
-  h3{font-size:1.16rem;color:var(--accent2);margin:26px 0 6px;}
-  h4{font-size:1.02rem;margin:18px 0 4px;color:#143b54;}
-  p{margin:10px 0;}
-  .lede{font-size:1.05rem;color:var(--muted);font-style:italic;margin-top:0;}
-  ul,ol{margin:10px 0 10px 4px;padding-left:22px;}
-  li{margin:6px 0;}
-  .card{background:var(--soft);border:1px solid var(--line);border-left:5px solid var(--accent);
-    border-radius:10px;padding:16px 18px;margin:18px 0;}
-  .card.warn{border-left-color:var(--warn);}
-  .card.good{border-left-color:var(--good);}
-  .card.purple{border-left-color:var(--accent2);}
-  .stat{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0;}
-  .stat .box{flex:1 1 180px;background:#0f2c43;color:#fff;border-radius:10px;padding:16px;}
-  .stat .box b{display:block;font-size:1.7rem;line-height:1.1;color:#9fd6ec;}
-  .stat .box span{font-size:.82rem;opacity:.9;}
-  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:16px 0;font-size:.86rem;}
-  .flow .step{background:#eaf3f8;border:1px solid #b9d8e6;border-radius:8px;padding:7px 11px;}
-  .flow .arrow{color:var(--accent);font-weight:800;}
-  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.9rem;}
-  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;}
-  th{background:#11314a;color:#fff;font-weight:600;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--ff-body);color:var(--ink);line-height:1.62;
+    background:var(--bg);-webkit-font-smoothing:antialiased;}
+
+  /* ---------- LOAD-IN SEQUENCE: the neuron fires ---------- */
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(120% 140% at 15% 0%,#1b4a63 0%,#13384e 38%,#3a2a5e 78%,#2a1f48 100%);
+    padding:0;min-height:clamp(440px,72vh,640px);display:flex;align-items:center;}
+  .hero .neuro{position:absolute;inset:0;width:100%;height:100%;opacity:.5;}
+  .hero .wrap{position:relative;z-index:3;max-width:960px;margin:0 auto;padding:48px 26px;}
+  .eyebrow{font-family:var(--ff-mono);font-size:.74rem;letter-spacing:.28em;
+    text-transform:uppercase;color:#8fd4e6;margin:0 0 20px;opacity:0;
+    animation:fadeUp .7s .15s forwards;}
+  .hero h1{font-family:var(--ff-display);font-weight:600;font-size:clamp(2rem,5.4vw,3.5rem);
+    line-height:1.04;margin:0 0 18px;letter-spacing:-.015em;max-width:14ch;}
+  .hero h1 .ln{display:block;opacity:0;transform:translateY(22px);
+    animation:fadeUp .8s forwards;}
+  .hero h1 .ln:nth-child(1){animation-delay:.30s;}
+  .hero h1 .ln:nth-child(2){animation-delay:.46s;}
+  .hero h1 .ln .em{font-style:italic;color:#f5a26b;}
+  .hero p.sub{font-size:clamp(1rem,1.7vw,1.18rem);max-width:60ch;color:#cfe0e9;
+    opacity:0;animation:fadeUp .8s .68s forwards;margin:0 0 28px;}
+  .hero .scroll-cue{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-mono);
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#9fd6ec;
+    opacity:0;animation:fadeUp .8s .9s forwards;}
+  .hero .scroll-cue .dot{width:9px;height:9px;border-radius:50%;background:#f5a26b;
+    animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.7);opacity:.4;}}
+
+  /* travelling signal pips on hero neuron */
+  .signal{fill:#ffd9a8;filter:drop-shadow(0 0 6px #ffb061);}
+
+  /* ---------- NAV ---------- */
+  nav.bar{position:sticky;top:0;z-index:40;background:rgba(15,40,56,.93);
+    backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);}
+  nav.bar .wrap{max-width:960px;margin:0 auto;padding:0 18px;display:flex;gap:2px;
+    overflow-x:auto;scrollbar-width:none;}
+  nav.bar .wrap::-webkit-scrollbar{display:none;}
+  nav.bar a{flex:0 0 auto;color:#bcd4e0;text-decoration:none;font-size:.8rem;font-weight:600;
+    padding:13px 14px;border-bottom:2px solid transparent;white-space:nowrap;transition:.2s;}
+  nav.bar a:hover,nav.bar a.active{color:#fff;border-bottom-color:#f5a26b;}
+
+  /* progress bar */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--teal),var(--violet),var(--flame));}
+
+  main{max-width:960px;margin:0 auto;padding:8px 22px 80px;}
+
+  section{background:var(--panel);margin:26px 0;padding:38px 38px 32px;border-radius:18px;
+    box-shadow:0 1px 3px rgba(20,40,60,.05),0 10px 34px rgba(20,40,60,.06);
+    opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  section.in{opacity:1;transform:none;}
+
+  .kicker{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--teal-d);display:flex;align-items:center;gap:10px;margin:0 0 6px;}
+  .kicker .idx{color:var(--violet);font-weight:700;}
+  .kicker .rule{flex:1;height:1px;background:var(--line);}
+  h2{font-family:var(--ff-display);font-weight:600;font-size:clamp(1.5rem,3vw,2rem);
+    line-height:1.1;margin:0 0 14px;letter-spacing:-.01em;color:var(--ink);}
+  h3{font-family:var(--ff-display);font-weight:600;font-size:1.24rem;color:var(--violet-d);
+    margin:30px 0 8px;}
+  h4{font-size:1rem;margin:18px 0 4px;color:var(--teal-d);font-weight:700;}
+  p{margin:11px 0;}
+  .lede{font-family:var(--ff-display);font-style:italic;font-size:1.16rem;line-height:1.5;
+    color:var(--muted);margin:2px 0 18px;}
+  ul,ol{margin:10px 0;padding-left:22px;}li{margin:7px 0;}
+  .pill{display:inline-block;font-family:var(--ff-mono);font-size:.74rem;font-weight:600;
+    padding:2px 9px;border-radius:6px;margin:1px 2px;}
+  .pill.up{background:#fbe3d4;color:#b3460f;}
+  .pill.dn{background:#d7eee2;color:#16734a;}
+
+  .card{background:var(--soft);border:1px solid var(--line);border-left:5px solid var(--teal);
+    border-radius:0 12px 12px 0;padding:18px 20px;margin:20px 0;}
+  .card.warn{border-left-color:var(--flame);background:#fff7f1;}
+  .card.good{border-left-color:var(--good);background:#f1faf5;}
+  .card.violet{border-left-color:var(--violet);background:#f8f4fc;}
+  .card .lbl{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;display:block;margin-bottom:4px;}
+  .card.warn .lbl{color:var(--flame);}
+  .card.good .lbl{color:var(--good);}
+  .card.violet .lbl{color:var(--violet-d);}
+  .card.teal .lbl,.card .lbl{color:var(--teal-d);}
+
+  blockquote{font-family:var(--ff-display);font-style:italic;font-size:1.08rem;color:#3a4a58;
+    border-left:4px solid var(--violet);margin:16px 0;padding:6px 18px;background:var(--soft);
+    border-radius:0 10px 10px 0;}
+  blockquote cite{display:block;font-family:var(--ff-body);font-style:normal;font-size:.84rem;
+    color:var(--muted);margin-top:8px;}
+
+  table{border-collapse:collapse;width:100%;margin:18px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;}
+  th{background:var(--teal-d);color:#fff;font-weight:600;font-size:.82rem;letter-spacing:.02em;}
   tr:nth-child(even) td{background:var(--soft);}
+
   .src{font-size:.82rem;color:var(--muted);}
-  blockquote{border-left:4px solid var(--accent2);margin:14px 0;padding:6px 16px;background:var(--soft);
-    color:#3a4456;font-style:italic;border-radius:0 8px 8px 0;}
-  .pill{display:inline-block;background:#e9f1f6;color:#1f5b73;border-radius:6px;padding:1px 8px;
-    font-size:.8rem;font-weight:600;margin:0 2px;}
-  .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:16px;}
-  .res-grid .col{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+
+  /* ---------- STAT COUNTERS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:22px 0;}
+  .stat{position:relative;background:linear-gradient(160deg,#13384e,#27405e);color:#fff;
+    border-radius:14px;padding:20px 18px;overflow:hidden;}
+  .stat::after{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;
+    border-radius:50%;background:radial-gradient(circle,rgba(245,162,107,.5),transparent 70%);}
+  .stat .big{font-family:var(--ff-display);font-weight:600;font-size:2.1rem;line-height:1;
+    color:#9fd6ec;}
+  .stat .cap{font-size:.8rem;opacity:.92;margin-top:8px;display:block;}
+
+  /* ---------- CASCADE FLOW ---------- */
+  .cascade{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:22px 0;
+    font-size:.84rem;}
+  .cascade .node{flex:1 1 120px;min-width:120px;background:var(--soft);border:1px solid var(--line);
+    border-radius:10px;padding:12px 13px;position:relative;transition:.5s;opacity:.35;transform:translateY(6px);}
+  .cascade.run .node{opacity:1;transform:none;}
+  .cascade.run .node:nth-child(1){transition-delay:.0s;}
+  .cascade.run .node:nth-child(3){transition-delay:.25s;}
+  .cascade.run .node:nth-child(5){transition-delay:.5s;}
+  .cascade.run .node:nth-child(7){transition-delay:.75s;}
+  .cascade .node .t{font-weight:700;color:var(--teal-d);display:block;font-size:.82rem;}
+  .cascade .node .d{color:var(--muted);font-size:.78rem;}
+  .cascade .arr{flex:0 0 26px;display:flex;align-items:center;justify-content:center;
+    color:var(--violet);font-weight:800;font-size:1.1rem;opacity:.3;transition:.5s;}
+  .cascade.run .arr{opacity:1;}
+
+  /* ---------- INTERACTIVE TOGGLE: calm vs inflamed ---------- */
+  .switchbox{background:linear-gradient(165deg,#0f3043,#22384f);border-radius:16px;
+    padding:24px;margin:24px 0;color:#fff;}
+  .switchbox .head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;}
+  .switchbox h4{color:#cfe0e9;margin:0;font-family:var(--ff-display);font-size:1.15rem;font-weight:600;}
+  .toggle{display:inline-flex;background:rgba(255,255,255,.1);border-radius:30px;padding:4px;cursor:pointer;
+    user-select:none;border:1px solid rgba(255,255,255,.14);}
+  .toggle span{padding:8px 18px;border-radius:26px;font-size:.82rem;font-weight:700;transition:.35s;
+    font-family:var(--ff-mono);letter-spacing:.04em;}
+  .toggle .on{background:#1f8aa6;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25);}
+  body.inflamed .toggle .calm{background:transparent;color:#a9c2d0;}
+  body.inflamed .toggle .infl{background:var(--flame);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.3);}
+  body:not(.inflamed) .toggle .infl{background:transparent;color:#a9c2d0;}
+
+  .bars{margin-top:20px;display:grid;gap:12px;}
+  .bars .row{display:grid;grid-template-columns:120px 1fr 52px;align-items:center;gap:12px;font-size:.82rem;}
+  .bars .name{color:#cfe0e9;font-weight:600;}
+  .bars .track{height:14px;background:rgba(255,255,255,.1);border-radius:8px;overflow:hidden;}
+  .bars .fill{height:100%;width:30%;border-radius:8px;transition:width .8s cubic-bezier(.3,.7,.2,1),background .5s;}
+  .bars .val{font-family:var(--ff-mono);font-size:.78rem;color:#9fd6ec;text-align:right;}
+  .switchbox .caption{margin:16px 0 0;font-size:.84rem;color:#a9c2d0;}
+  .switchbox .caption b{color:#fff;}
+
+  /* ---------- SVG CHARTS ---------- */
+  .chartwrap{margin:22px 0;background:var(--soft);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 14px;}
+  .chartwrap .ctitle{font-weight:700;color:var(--ink);font-size:.96rem;margin:0 0 2px;}
+  .chartwrap .csub{font-size:.8rem;color:var(--muted);margin:0 0 12px;}
+  .chartwrap .cnote{font-size:.76rem;color:var(--muted);margin:10px 0 0;}
+  .grid line{stroke:var(--line);stroke-width:1;}
+  .axis text{font-family:var(--ff-mono);font-size:10px;fill:var(--muted);}
+  .barA{fill:var(--teal);} .barB{fill:var(--flame);}
+  .barlabel{font-family:var(--ff-mono);font-size:11px;fill:#fff;font-weight:600;}
+  .lollipop-stem{stroke:var(--violet);stroke-width:2;}
+  .lollipop-dot{fill:var(--violet);}
+  .ci-line{stroke:var(--violet);stroke-width:2;opacity:.55;}
+  .reflbl{font-family:var(--ff-mono);font-size:10px;fill:var(--muted);}
+
+  /* donut */
+  .donut-seg{transition:stroke-dashoffset 1.1s cubic-bezier(.3,.7,.2,1);}
+
+  /* ---------- STEP CARDS (avoidant work) ---------- */
+  .steps{display:grid;gap:14px;margin:18px 0;}
+  .step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:18px 20px 16px;
+    position:relative;border-top:4px solid var(--violet);}
+  .step .n{position:absolute;top:-15px;left:18px;width:34px;height:34px;border-radius:50%;
+    background:var(--violet);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:var(--ff-display);font-weight:600;font-size:1rem;box-shadow:0 3px 8px rgba(90,55,135,.35);}
+  .step h4{margin:8px 0 4px;color:var(--violet-d);}
+
+  /* two-col need grid */
+  .needs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;}
+  .needs .col{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .needs .col h4{margin-top:0;display:flex;align-items:center;gap:8px;}
+  .needs .col .ic{width:26px;height:26px;flex:0 0 26px;}
+
+  /* resources */
+  .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px;}
+  .res-grid .col{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+    transition:transform .25s,box-shadow .25s;}
+  .res-grid .col:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(20,40,60,.1);}
   .res-grid h4{margin-top:0;}
-  .res-grid a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .res-grid a{color:var(--teal-d);text-decoration:none;font-weight:700;font-family:var(--ff-mono);font-size:.82rem;}
   .res-grid a:hover{text-decoration:underline;}
-  footer{max-width:920px;margin:0 auto;padding:24px 22px 60px;color:#5b6675;font-size:.82rem;}
-  .disclaimer{background:#fff6ea;border:1px solid #f0d9b8;border-radius:10px;padding:16px 18px;color:#6b4a १2;}
-  .disclaimer{color:#6b4a12;}
-  @media(max-width:600px){header h1{font-size:1.6rem;}section{padding:22px 18px;}}
+
+  footer{max-width:960px;margin:0 auto;padding:10px 22px 70px;color:var(--muted);font-size:.82rem;}
+  .disclaimer{background:#fff7f1;border:1px solid #f3d6c2;border-left:5px solid var(--flame);
+    border-radius:0 12px 12px 0;padding:18px 20px;color:#7a4a26;}
+  .disclaimer b{color:var(--flame);}
+
+  a.inline{color:var(--teal-d);}
+
+  @media(max-width:680px){
+    section{padding:26px 20px;}
+    .needs{grid-template-columns:1fr;}
+    .bars .row{grid-template-columns:84px 1fr 44px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    section{opacity:1;transform:none;}
+    .hero h1 .ln,.eyebrow,.hero p.sub,.hero .scroll-cue{opacity:1;transform:none;}
+  }
 </style>
 </head>
 <body>
-<header>
+<div id="progress"></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="neuro" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="axon" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#2f7e9b"/><stop offset="1" stop-color="#7a4fb0"/>
+      </linearGradient>
+      <radialGradient id="soma" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#3aa0bd"/><stop offset="1" stop-color="#1c5a72"/>
+      </radialGradient>
+    </defs>
+    <!-- dendrites -->
+    <g stroke="url(#axon)" stroke-width="2.5" fill="none" opacity=".55">
+      <path d="M150,320 C90,250 60,180 30,140"/>
+      <path d="M150,320 C90,300 50,300 20,330"/>
+      <path d="M150,320 C95,360 70,430 50,500"/>
+      <path d="M160,300 C120,230 130,180 100,120"/>
+    </g>
+    <!-- soma -->
+    <circle cx="185" cy="322" r="48" fill="url(#soma)"/>
+    <circle cx="185" cy="322" r="48" fill="none" stroke="#8fd4e6" stroke-width="1.5" opacity=".6"/>
+    <!-- axon with myelin segments -->
+    <path id="axonpath" d="M233,322 C420,300 540,360 720,330 C900,300 1010,360 1200,332"
+          stroke="url(#axon)" stroke-width="6" fill="none" opacity=".75"/>
+    <g fill="#bfe6f0" opacity=".5">
+      <ellipse cx="360" cy="316" rx="26" ry="15"/>
+      <ellipse cx="500" cy="338" rx="26" ry="15"/>
+      <ellipse cx="640" cy="334" rx="26" ry="15"/>
+      <ellipse cx="800" cy="320" rx="26" ry="15"/>
+      <ellipse cx="950" cy="332" rx="26" ry="15"/>
+      <ellipse cx="1090" cy="335" rx="26" ry="15"/>
+    </g>
+    <!-- travelling signals -->
+    <circle class="signal" r="6"><animateMotion dur="3.2s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#axonpath"/></animateMotion></circle>
+    <circle class="signal" r="4" opacity=".8"><animateMotion dur="3.2s" begin="1.1s" repeatCount="indefinite">
+      <mpath href="#axonpath"/></animateMotion></circle>
+    <circle class="signal" r="5" opacity=".9"><animateMotion dur="3.2s" begin="2.0s" repeatCount="indefinite">
+      <mpath href="#axonpath"/></animateMotion></circle>
+  </svg>
+
   <div class="wrap">
-    <span class="tag">Evidence-based research report · June 2026</span>
-    <h1>Stress, Inflammation & Multiple Sclerosis — and Loving Well Through It</h1>
-    <p>How chronic stress drives the inflammation behind autoimmune disease and MS relapses — and a practical, research-grounded guide for a dismissive-avoidant husband supporting a wife with MS.</p>
+    <p class="eyebrow">Evidence-based research report · June 2026</p>
+    <h1>
+      <span class="ln">Stress, inflammation &amp; <span class="em">multiple sclerosis</span></span>
+      <span class="ln">— and loving well through it.</span>
+    </h1>
+    <p class="sub">How chronic stress becomes bodily inflammation and feeds MS relapses — and a practical, research-grounded guide for a dismissive-avoidant husband supporting a wife with MS.</p>
+    <a class="scroll-cue" href="#overview"><span class="dot"></span> Scroll to begin</a>
   </div>
 </header>
 
-<nav>
-  <div class="wrap">
-    <a href="#overview">Overview</a>
-    <a href="#mechanism">Stress → Inflammation</a>
-    <a href="#chronic">Acute vs Chronic</a>
-    <a href="#autoimmune">Autoimmunity</a>
-    <a href="#ms">MS Focus</a>
-    <a href="#interventions">Stress Reduction</a>
-    <a href="#attachment">Avoidant Husband</a>
-    <a href="#caregiving">Caregiving</a>
-    <a href="#wife">What She Needs</a>
-    <a href="#resources">Resources</a>
-  </div>
-</nav>
+<!-- ============ NAV ============ -->
+<nav class="bar"><div class="wrap">
+  <a href="#overview">Overview</a>
+  <a href="#mechanism">Stress → Inflammation</a>
+  <a href="#chronic">Acute vs Chronic</a>
+  <a href="#autoimmune">Autoimmunity</a>
+  <a href="#ms">MS in Depth</a>
+  <a href="#interventions">Stress Reduction</a>
+  <a href="#attachment">The Avoidant Husband</a>
+  <a href="#caregiving">Caregiving</a>
+  <a href="#wife">What She Needs</a>
+  <a href="#resources">Resources</a>
+</div></nav>
 
 <main>
 
+<!-- OVERVIEW -->
 <section id="overview">
-  <h2>Why these two topics belong in one report</h2>
-  <p class="lede">A calmer, more securely connected marriage is not just emotionally nicer — for a person with MS it may be biologically protective.</p>
-  <p>This report joins two questions that are usually treated separately. Topic 1 explains the physiology by which psychological stress becomes bodily inflammation, why chronic stress is uniquely damaging, and how this cascade feeds autoimmune disease — with a deep focus on multiple sclerosis (MS). Topic 2 is a practical playbook for a husband with a <strong>dismissive-avoidant attachment style</strong> who wants to become a better partner to his wife who has MS.</p>
-  <p>The bridge between them is simple and consequential: <strong>relationship distress is a chronic stressor.</strong> Because chronic stress is plausibly linked to MS inflammatory activity, the emotional work the husband does — staying present instead of withdrawing, reducing conflict, offering genuine co-regulation — is not separate from his wife's medical care. It is part of the environment her immune system lives in.</p>
+  <p class="kicker"><span class="idx">00</span> Why these belong together <span class="rule"></span></p>
+  <h2>A calmer marriage may be biologically protective</h2>
+  <p class="lede">Relationship distress is a chronic stressor — and chronic stress is plausibly linked to MS inflammatory activity. So the emotional work is not separate from her medical care.</p>
+  <p>This report joins two questions usually kept apart. <strong>Topic 1</strong> explains the physiology by which psychological stress becomes inflammation, why chronic stress is uniquely damaging, and how the cascade feeds autoimmune disease — focusing on multiple sclerosis (MS). <strong>Topic 2</strong> is a practical playbook for a husband with a <strong>dismissive-avoidant attachment style</strong> who wants to show up better for his wife who has MS.</p>
+  <p>The bridge is simple: every time he stays present instead of withdrawing, he lowers her chronic-stress load — and that load is part of the environment her immune system lives in.</p>
   <div class="card warn">
-    <strong>Important framing — read this first.</strong> The evidence that stress influences MS is real but <em>modest</em>, and it must never be used to blame a patient for a relapse. As the authors of the foundational meta-analysis wrote, these data should not "be used to infer that patients are responsible for their exacerbations" (Mohr et al., <em>BMJ</em>, 2004). Stress management is a supportive adjunct to disease-modifying therapy — never a replacement.
+    <span class="lbl">Read this first</span>
+    The stress–MS link is real but <em>modest</em>, and must never be used to blame a patient for a relapse. As the foundational meta-analysis cautioned, these data should not be used to infer that patients are responsible for their own exacerbations (Mohr et al., <em>BMJ</em>, 2004). Stress management supports disease-modifying therapy — it never replaces it.
   </div>
 </section>
 
+<!-- MECHANISM -->
 <section id="mechanism">
-  <h2><span class="num">1.</span>How stress becomes inflammation</h2>
+  <p class="kicker"><span class="idx">01</span> The biology <span class="rule"></span></p>
+  <h2>How stress becomes inflammation</h2>
 
-  <h3>The two stress highways: the HPA axis and the sympathetic nervous system</h3>
-  <p>When the brain perceives a threat, limbic structures — especially the amygdala — signal the <strong>paraventricular nucleus (PVN)</strong> of the hypothalamus. This launches two parallel systems:</p>
-  <div class="flow">
-    <span class="step">Amygdala / PVN</span><span class="arrow">→</span>
-    <span class="step">CRH (hypothalamus)</span><span class="arrow">→</span>
-    <span class="step">ACTH (pituitary)</span><span class="arrow">→</span>
-    <span class="step">Cortisol (adrenal cortex)</span>
+  <h3>Two stress highways</h3>
+  <p>When the brain perceives threat, the amygdala signals the hypothalamus, launching two parallel systems: the <strong>HPA axis</strong> (a hormone cascade ending in cortisol) and the <strong>sympathetic nervous system</strong> (fast "fight-or-flight" signaling via norepinephrine).</p>
+
+  <div class="cascade" id="hpa">
+    <div class="node"><span class="t">Amygdala / PVN</span><span class="d">Threat detected</span></div>
+    <div class="arr">→</div>
+    <div class="node"><span class="t">CRH</span><span class="d">Hypothalamus</span></div>
+    <div class="arr">→</div>
+    <div class="node"><span class="t">ACTH</span><span class="d">Pituitary</span></div>
+    <div class="arr">→</div>
+    <div class="node"><span class="t">Cortisol</span><span class="d">Adrenal cortex</span></div>
   </div>
-  <p>That is the <strong>hypothalamic–pituitary–adrenal (HPA) axis</strong>. Simultaneously the <strong>sympathetic nervous system (SNS)</strong> fires the "fight-or-flight" response, releasing the catecholamine <strong>norepinephrine</strong> from nerve terminals (Knezevic et al., <em>Int. J. Molecular Sciences</em>, 2025).</p>
 
   <h3>Cortisol's normal job is to <em>restrain</em> inflammation</h3>
-  <p>Cortisol acts through the intracellular <strong>glucocorticoid receptor (GR)</strong> to suppress the master pro-inflammatory transcription factor <strong>NF-κB</strong> (and AP-1).  This lowers production of the pro-inflammatory cytokines <span class="pill">IL-1β</span> <span class="pill">IL-6</span> <span class="pill">TNF-α</span>, limits leukocyte migration, and inhibits T- and B-lymphocyte proliferation.  In other words, the same hormone we release under stress is, acutely, profoundly anti-inflammatory — which is why synthetic glucocorticoids (e.g., prednisone, IV steroids for MS relapses) are front-line anti-inflammatory drugs.</p>
+  <p>Acutely, cortisol acts through the <strong>glucocorticoid receptor</strong> to suppress the master pro-inflammatory switch <strong>NF-κB</strong>, lowering IL-1β, IL-6, and TNF-α. That is exactly why synthetic glucocorticoids (prednisone, IV steroids for MS relapses) are front-line anti-inflammatory drugs. The trouble begins when stress stops switching off.</p>
 
-  <h3>The key transcription factors and cytokines</h3>
-  <table>
-    <tr><th>Player</th><th>Role in the stress–inflammation story</th></tr>
-    <tr><td><strong>NF-κB</strong></td><td>Master switch for pro-inflammatory genes. Normally suppressed by cortisol; "released" when GR signaling fails or when SNS/β-adrenergic signaling activates it.</td></tr>
-    <tr><td><strong>IL-6, TNF-α, IL-1β</strong></td><td>Core pro-inflammatory cytokines; rise under chronic stress and feed back to stimulate the HPA axis.</td></tr>
-    <tr><td><strong>CRP</strong></td><td>C-reactive protein — a downstream, blood-measurable marker of systemic (largely IL-6-driven) inflammation.</td></tr>
-    <tr><td><strong>IL-17 / Th17 cells</strong></td><td>Drive autoimmune tissue damage; expand under chronic stress.</td></tr>
-    <tr><td><strong>IL-10 / regulatory T-cells (Tregs)</strong></td><td>Anti-inflammatory "brakes" on autoimmunity; <em>fall</em> under chronic stress.</td></tr>
-  </table>
-</section>
+  <!-- INTERACTIVE TOGGLE -->
+  <div class="switchbox">
+    <div class="head">
+      <h4>The cytokine balance — acute vs. chronic stress</h4>
+      <div class="toggle" id="toggle" role="button" tabindex="0" aria-label="Toggle calm or inflamed state">
+        <span class="calm on">Acute / calm</span><span class="infl">Chronic stress</span>
+      </div>
+    </div>
+    <div class="bars" id="bars">
+      <div class="row"><span class="name">NF-κB activity</span><div class="track"><div class="fill" data-calm="22" data-infl="92"></div></div><span class="val">—</span></div>
+      <div class="row"><span class="name">IL-6</span><div class="track"><div class="fill" data-calm="25" data-infl="85"></div></div><span class="val">—</span></div>
+      <div class="row"><span class="name">TNF-α</span><div class="track"><div class="fill" data-calm="28" data-infl="82"></div></div><span class="val">—</span></div>
+      <div class="row"><span class="name">IL-17 / Th17</span><div class="track"><div class="fill" data-calm="20" data-infl="78"></div></div><span class="val">—</span></div>
+      <div class="row"><span class="name">IL-10 (brake)</span><div class="track"><div class="fill" data-calm="80" data-infl="30"></div></div><span class="val">—</span></div>
+      <div class="row"><span class="name">Treg cells (brake)</span><div class="track"><div class="fill" data-calm="78" data-infl="26"></div></div><span class="val">—</span></div>
+    </div>
+    <p class="caption" id="cap"><b>Acute stress:</b> a cortisol pulse keeps inflammation in check and the anti-inflammatory brakes (IL-10, regulatory T-cells) high. Toggle to see what sustained stress does.</p>
+  </div>
 
-<section id="chronic">
-  <h2><span class="num">2.</span>Acute vs. chronic stress — and why chronic stress is the villain</h2>
-
-  <h3>Acute stress: protective</h3>
-  <p>A short-lived stressor produces a cortisol pulse that <em>restrains</em> IL-1β/IL-6/TNF-α and supports the anti-inflammatory IL-10, maintaining immune homeostasis.  Acute stress can actually mobilize and sharpen immune defenses (Dhabhar's "good, bad, and beautiful" model of stress immunology).</p>
-
-  <h3>Chronic stress: the switch flips toward inflammation</h3>
-  <p>Sustained stress dismantles this regulation through several converging mechanisms:</p>
+  <h3>Why chronic stress flips the switch</h3>
   <ul>
-    <li><strong>Glucocorticoid receptor resistance.</strong> Prolonged cortisol exposure downregulates and desensitizes GRs.  Immune cells stop "hearing" cortisol's anti-inflammatory signal, so NF-κB runs unchecked and inflammation becomes self-sustaining (De Bosscher; Bellavance & Rivest).</li>
-    <li><strong>The cytokine balance inverts.</strong> The network tips toward <span class="pill">↑ IL-6</span> <span class="pill">↑ TNF-α</span> <span class="pill">↑ IL-17</span> and <span class="pill">↓ IL-10</span> with reduced Treg number/function — an environment that "favors autoimmunity" (Knezevic et al., 2025).</li>
-    <li><strong>Loss of self/non-self tolerance.</strong> Chronic stress blunts cortisol's tolerogenic programming of dendritic cells, eroding the immune system's ability to distinguish self from threat.</li> 
-    <li><strong>Adrenal exhaustion / paradoxical hypocortisolism.</strong> After prolonged demand, adrenal output can fall, leaving the body with too little cortisol to restrain inflammation — a state linked to chronic inflammatory and autoimmune disease.</li> 
+    <li><strong>Glucocorticoid-receptor resistance.</strong> Prolonged cortisol desensitizes receptors; immune cells stop "hearing" the anti-inflammatory signal, and NF-κB runs unchecked.</li>
+    <li><strong>The CTRA pathway.</strong> Steve Cole's gene-expression work shows sustained sympathetic signaling pushes norepinephrine onto leukocyte β-receptors, <em>up</em>regulating pro-inflammatory genes and <em>down</em>regulating antiviral interferon genes — a second, cortisol-independent route.</li>
+    <li><strong>Gut–brain axis.</strong> Stress weakens the intestinal barrier; microbial fragments (LPS) leak into the blood, driving systemic IL-6/TNF-α that re-stimulate the HPA axis — a self-reinforcing loop that can also degrade the blood-brain barrier.</li>
   </ul>
-
   <div class="card good">
-    <strong>The demonstration that started it all.</strong> Miller, Cohen & Ritchey (2002, <em>Health Psychology</em>) studied chronically stressed parents of pediatric cancer patients. Their immune cells were significantly <em>less able to suppress IL-6 production in response to dexamethasone</em> than controls  — the original human evidence of stress-induced glucocorticoid resistance, the central mechanism translating chronic psychological stress into a pro-inflammatory state.
+    <span class="lbl">The original human demonstration</span>
+    Miller, Cohen &amp; Ritchey (2002) studied chronically stressed parents of pediatric cancer patients. Their immune cells were significantly less able to suppress IL-6 in response to dexamethasone than controls — the first human evidence of stress-induced glucocorticoid resistance, the central mechanism linking chronic stress to inflammation.
   </div>
-
-  <h3>The SNS/β-adrenergic route: the "Conserved Transcriptional Response to Adversity" (CTRA)</h3>
-  <p>Steve Cole's gene-expression research identified a recurring fingerprint in people under chronic adversity (loneliness, bereavement, low status, threat). Extended SNS activation pushes norepinephrine onto <strong>leukocyte β-adrenergic receptors</strong>, which (via cAMP/PKA/CREB) <strong>upregulates NF-κB-driven pro-inflammatory genes</strong>  (IL1B, IL6, IL8, TNF) and <strong>downregulates antiviral type-I interferon genes</strong>.  This is a second, cortisol-independent pathway by which the social environment is biologically embedded — and it is partly reversible (e.g., interventions that increase positive social connection shift CTRA favorably).</p>
-
-  <h3>The gut–brain axis</h3>
-  <p>Chronic stress (and elevated cortisol) weakens the intestinal barrier and shifts the microbiome toward <strong>dysbiosis</strong>. The leaky barrier lets microbial components such as <strong>LPS</strong> translocate into the bloodstream, triggering systemic IL-6 and TNF-α — which in turn re-stimulate the HPA axis, sustaining a low-grade inflammatory loop.  The same stress can degrade <strong>blood-brain-barrier</strong> tight junctions, letting this peripheral inflammation influence the brain.  Gut–brain dysregulation is increasingly studied as a therapeutic target in MS.</p>
 </section>
 
+<!-- CHRONIC -->
+<section id="chronic">
+  <p class="kicker"><span class="idx">02</span> Dose makes the poison <span class="rule"></span></p>
+  <h2>Acute stress protects. Chronic stress corrodes.</h2>
+  <p>A short stressor sharpens immune defenses — Dhabhar's "good" stress. The damage comes from <em>sustained</em> activation: receptor resistance, an inverted cytokine balance (<span class="pill up">↑ IL-6</span><span class="pill up">↑ TNF-α</span><span class="pill up">↑ IL-17</span><span class="pill dn">↓ IL-10</span><span class="pill dn">↓ Tregs</span>), eroded self/non-self tolerance, and eventually adrenal exhaustion that can leave too little cortisol to restrain inflammation at all.</p>
+  <blockquote>The immune environment shifts "from one of tolerance toward one that favors autoimmunity."
+    <cite>— Knezevic et al., <em>Int. J. Molecular Sciences</em>, 2025</cite></blockquote>
+</section>
+
+<!-- AUTOIMMUNE -->
 <section id="autoimmune">
-  <h2><span class="num">3.</span>How the cascade feeds autoimmune disease</h2>
-  <p>In autoimmune disease the immune system loses tolerance and attacks the body's own tissue. Chronic-stress-driven HPA dysregulation contributes on several fronts at once: it blunts tolerogenic dendritic-cell programming (reducing self/non-self discrimination), expands pro-autoimmune Th17 cells while shrinking regulatory T-cells, boosts autoantibody production by B-cells, and suppresses NK-cell surveillance.  The net effect is a shift "from an environment of immune tolerance toward one that favors autoimmunity," clinically manifesting as the onset or flare of diseases such as rheumatoid arthritis, lupus, and MS (Knezevic et al., 2025).</p>
+  <p class="kicker"><span class="idx">03</span> When the body turns on itself <span class="rule"></span></p>
+  <h2>How the cascade feeds autoimmune disease</h2>
+  <p>In autoimmunity the immune system loses tolerance and attacks the body's own tissue. Chronic-stress-driven dysregulation contributes on several fronts at once: it blunts tolerogenic dendritic-cell programming, expands pro-autoimmune Th17 cells while shrinking regulatory T-cells, boosts autoantibody production, and suppresses NK-cell surveillance.</p>
 
-  <div class="card">
-    <strong>Population-scale evidence.</strong> Song et al. (<em>JAMA</em>, 2018) followed a Swedish cohort of 106,464 people with stress-related disorders. Compared with unaffected siblings and the general population, a stress-related disorder carried a hazard ratio of <strong>1.36 (95% CI 1.33–1.40)</strong> for developing <em>any</em> autoimmune disease, rising to <strong>HR 2.29 (95% CI 1.72–3.04)</strong> for developing three or more autoimmune diseases among those with PTSD. Incidence of autoimmune disease was 9.1 vs 6.0 per 1,000 person-years. This is association, not proof of causation — but it is large, prospective, and sibling-controlled.
+  <div class="chartwrap">
+    <p class="ctitle">Stress-related disorders and the risk of autoimmune disease</p>
+    <p class="csub">Hazard ratios vs. unaffected siblings — Song et al., JAMA 2018 (n = 106,464)</p>
+    <svg id="lolli" viewBox="0 0 720 220" width="100%" role="img" aria-label="Lollipop chart of hazard ratios">
+      <!-- baseline at HR=1 -->
+    </svg>
+    <p class="cnote">Sibling-controlled, prospective. Association, not proof of causation — but large and consistent. Incidence of autoimmune disease: 9.1 vs 6.0 per 1,000 person-years.</p>
   </div>
-  <p>Clinical biomarker studies reinforce the link: women with autoimmune disease (lupus, Sjögren's, systemic sclerosis) show elevated hair and salivary cortisol versus controls (Montero-López et al., 2017), consistent with chronic HPA activation.</p> 
 </section>
 
+<!-- MS -->
 <section id="ms">
-  <h2><span class="num">4.</span>Multiple Sclerosis: the evidence in depth</h2>
-  <p class="lede">MS is a chronic, immune-mediated demyelinating disease of the CNS affecting an estimated 2.8 million people worldwide; the immune system attacks the myelin sheath insulating nerve fibers.</p>
+  <p class="kicker"><span class="idx">04</span> The focus <span class="rule"></span></p>
+  <h2>Multiple sclerosis, in depth</h2>
+  <p class="lede">MS is a chronic, immune-mediated demyelinating disease of the central nervous system affecting ~2.8 million people worldwide. The immune system attacks the myelin insulating nerve fibers.</p>
 
-  <h3>The mechanistic chain in MS</h3>
+  <h3>The mechanistic chain</h3>
   <ol>
-    <li><strong>Stress opens the blood-brain barrier (BBB).</strong> Acute immobilization stress increases BBB permeability in animal models, an effect mediated substantially by <strong>brain mast-cell activation</strong> and <strong>CRH</strong>  (Esposito/Theoharides). BBB breakdown <em>precedes</em> clinical and pathological MS findings — it is an early event, not a consequence.</li> 
-    <li><strong>Autoreactive immune cells cross into the CNS.</strong> Activated T-cells — both CD4⁺ Th1/Th17 and CD8⁺ T-cells — traverse the compromised barrier.  Mast-cell mediators (histamine, TNF-α, IL-6) further increase permeability and recruit more immune cells.</li> 
-    <li><strong>Demyelination and lesions.</strong> Within the CNS these cells attack myelin, producing the inflammatory lesions (plaques) visible as gadolinium-enhancing (Gd+) and T2 lesions on MRI — the imaging signature of active disease.</li>
+    <li><strong>Stress opens the blood-brain barrier.</strong> Acute stress raises BBB permeability via brain mast-cell activation and CRH. Barrier breakdown <em>precedes</em> MS lesions — it is an early event, not a consequence.</li>
+    <li><strong>Autoreactive cells cross in.</strong> Activated CD4⁺ Th1/Th17 and CD8⁺ T-cells traverse the leaky barrier; mast-cell mediators recruit more.</li>
+    <li><strong>Demyelination.</strong> These cells attack myelin, producing the inflammatory lesions seen as gadolinium-enhancing and T2 lesions on MRI.</li>
   </ol>
 
-  <h3>Does stress actually trigger or worsen MS? The epidemiology</h3>
-  <p>The hypothesis is old — Charcot speculated about emotional distress and MS in 1877  — but the modern evidence has accumulated carefully:</p>
-  <div class="stat">
-    <div class="box"><b>RR 2.2</b><span>Relative rate of relapse in the 4 weeks after a stressful life event (95% CI 1.2–4.0). Buljevac et al., <em>BMJ</em> 2003 — prospective study of 73 patients.</span></div>
-    <div class="box"><b>d = 0.53</b><span>Pooled effect size linking stressful life events to subsequent exacerbation (95% CI 0.40–0.65; p&lt;0.0001) across 14 studies. Mohr et al., <em>BMJ</em> 2004 meta-analysis.</span></div>
-    <div class="box"><b>1.87×</b><span>Increased MS <em>onset</em> risk after diagnosed stress disorders (95% CI 1.06–3.43).  von Drathen et al., <em>Brain, Behavior, and Immunity</em> 2024.</span></div>
-    <div class="box"><b>3.0×</b><span>Relapse rate during war/severe collective stress (95% CI 1.56–5.81).  von Drathen et al., 2024.</span></div>
+  <h3>Does stress trigger or worsen MS? The numbers</h3>
+  <div class="stats" id="stats">
+    <div class="stat"><span class="big" data-to="2.2" data-suffix="×">0</span><span class="cap">Relapse rate in the 4 weeks after a stressful life event (RR 2.2; 95% CI 1.2–4.0). Buljevac, <em>BMJ</em> 2003.</span></div>
+    <div class="stat"><span class="big" data-to="0.53" data-dec="2">0</span><span class="cap">Pooled effect size linking stressful events to later exacerbation (95% CI 0.40–0.65). Mohr meta-analysis, <em>BMJ</em> 2004.</span></div>
+    <div class="stat"><span class="big" data-to="1.87" data-suffix="×" data-dec="2">0</span><span class="cap">Increased MS <em>onset</em> risk after a diagnosed stress disorder. von Drathen, 2024.</span></div>
+    <div class="stat"><span class="big" data-to="3.0" data-suffix="×" data-dec="1">0</span><span class="cap">Relapse rate during war / severe collective stress (95% CI 1.56–5.81). von Drathen, 2024.</span></div>
   </div>
-  <blockquote>"Stress was associated with a doubling of the exacerbation rate (relative risk 2.2, 95% confidence interval 1.2 to 4.0, P = 0.014) during the subsequent four weeks." — Buljevac et al., <em>BMJ</em> 2003</blockquote>
-  <p>The most rigorous recent synthesis — von Drathen et al. (<em>Brain, Behavior, and Immunity</em>, 2024), a Bayesian meta-analysis of 30 studies / 26 cohorts / 24,781 cases  — concluded that psychological stressors have a <strong>"minor to modest impact on disease onset, inflammatory activity and progression of MS."</strong>  The authors flagged case-selection bias and lack of confounder analysis in many studies.  So: real and consistent, but a contributing modifiable factor, not a sole cause.</p>
+  <blockquote>"Stress was associated with a doubling of the exacerbation rate … during the subsequent four weeks."
+    <cite>— Buljevac et al., <em>BMJ</em>, 2003 (prospective, 73 patients)</cite></blockquote>
+  <p>The most rigorous recent synthesis — von Drathen et al. (2024), a Bayesian meta-analysis of 30 studies and 24,781 cases — concluded stressors have a <strong>"minor to modest" impact</strong> on onset, activity, and progression, while flagging selection bias in the literature. Real and consistent, but a contributing modifiable factor, not a sole cause.</p>
   <div class="card warn">
-    <strong>Nuance worth knowing — the "resolution" effect.</strong> Some research suggests relapses can appear in the <em>weeks after</em> a stressor resolves and cortisol falls, releasing previously suppressed inflammation.  And importantly, <em>positive</em> stressful events have been associated with <em>decreased</em> lesion risk (Burns et al., 2014).  It is sustained negative stress, not all arousal, that matters.</p>
+    <span class="lbl">A nuance worth knowing</span>
+    Relapses can appear in the <em>weeks after</em> a stressor resolves and cortisol falls, releasing previously suppressed inflammation. And <em>positive</em> stressful events have been linked to <em>decreased</em> lesion risk (Burns et al., 2014). It is sustained negative stress that matters — not all arousal.
   </div>
 
-  <h3>The headline interventional trial</h3>
-  <div class="card good">
-    <strong>Mohr et al., <em>Neurology</em> 2012 — the only Class I evidence that managing stress affects the MS disease process.</strong> 121 patients with relapsing MS were randomized to a 24-week, 16-session manualized <strong>stress-management therapy (SMT-MS, CBT-based)</strong> versus a wait-list control. The treatment group developed significantly fewer new Gd+ lesions (p=0.04). Crucially:
-    <ul>
-      <li><strong>76.8% vs 54.7%</strong> remained free of new gadolinium-enhancing lesions during treatment (p=0.02).</li>
-      <li><strong>69.5% vs 42.7%</strong> remained free of new/enlarging T2 lesions (OR 3.07; 95% CI 1.38–6.81; p=0.006).</li>
-      <li>The study author noted the effect size was "similar to other recent phase II trials of new drug therapies for MS."</li> 
-    </ul>
-    <strong>The crucial caveat:</strong> the benefit <em>did not persist</em> after therapy ended (no group differences beyond 24 weeks)  — implying stress-management skills must be maintained, like exercise, to keep working.
+  <h3>The headline trial: managing stress changed the MRI</h3>
+  <div class="chartwrap">
+    <p class="ctitle">Patients free of new brain lesions during 24-week treatment</p>
+    <p class="csub">Stress-management therapy vs. wait-list — Mohr et al., Neurology 2012 (Class I evidence, n = 121)</p>
+    <svg id="msbar" viewBox="0 0 720 280" width="100%" role="img" aria-label="Bar chart comparing lesion-free patients"></svg>
+    <p class="cnote">The effect size was comparable to phase-II MS drug trials of the era — but it did <b>not</b> persist after therapy ended. Stress-management skills must be maintained, like exercise, to keep working.</p>
+  </div>
+  <div class="card">
+    <span class="lbl">The full-circle link</span>
+    Interpersonal stress has been positively associated with brain lesions on MRI in MS (Mohr et al., 2000). A hostile, emotionally distant home is exactly the kind of chronic stressor linked to inflammatory activity — while secure connection buffers the stress response and favorably shifts inflammatory gene expression. Reducing relationship stress is one of the few levers in MS fully within a couple's control.
   </div>
 </section>
 
+<!-- INTERVENTIONS -->
 <section id="interventions">
-  <h2><span class="num">5.</span>Evidence-based stress reduction for MS and autoimmune conditions</h2>
+  <p class="kicker"><span class="idx">05</span> What actually helps <span class="rule"></span></p>
+  <h2>Evidence-based stress reduction</h2>
   <table>
     <tr><th>Approach</th><th>What the evidence shows</th></tr>
-    <tr><td><strong>Stress-management therapy (CBT-based)</strong></td><td>Mohr 2012: reduced new MRI lesions during treatment (Class I). The strongest disease-activity signal of any behavioral intervention to date.</td></tr>
-    <tr><td><strong>Mindfulness / MBSR</strong></td><td>Grossman et al. (<em>Neurology</em>, 2010, n=150): significant, durable improvements in quality of life, depression, and fatigue, sustained at 6-month follow-up. A 2022 meta-analysis confirms MBIs improve QoL in MS. Note: a 2018 trial with an <em>active</em> education control (Senders et al.) found both groups improved without significant between-group difference  — so part of the benefit is non-specific.</td></tr>
-    <tr><td><strong>Cognitive Behavioral Therapy (CBT) for mood</strong></td><td>Repeatedly superior to supportive therapy for MS depression, including by telephone, with gains maintained at 12 months (Mohr et al.). Depression is common in MS (lifetime prevalence ~36–54%)  and itself worsens outcomes and adherence.</td></tr>
-    <tr><td><strong>Exercise</strong></td><td>Meta-analyses show exercise reduces MS fatigue and improves muscular fitness, function, and QoL; WHO (2020) rates the evidence for improved function as high-certainty. Emerging "exercise-induced postponement" theory and animal data suggest possible disease-modifying, anti-inflammatory effects. Guidance: favor moderate aerobic/resistance/balance work; avoid overexertion and overheating, which can transiently worsen symptoms.</td></tr>
-    <tr><td><strong>Sleep</strong></td><td>Cortisol is tightly coupled to circadian/sleep rhythm; poor sleep aggravates HPA dysregulation, fatigue, and inflammation. Sleep hygiene is foundational.</td></tr>
-    <tr><td><strong>Social connection & support</strong></td><td>Strong social support predicts better QoL in MS; positive social connection favorably shifts the CTRA inflammatory gene profile.  Loneliness/isolation worsen it. <em>This is the direct link to Topic 2.</em></td></tr>
+    <tr><td><strong>Stress-management therapy (CBT-based)</strong></td><td>Mohr 2012: reduced new MRI lesions during treatment — the strongest disease-activity signal of any behavioral intervention to date (Class I).</td></tr>
+    <tr><td><strong>Mindfulness / MBSR</strong></td><td>Grossman 2010 (n=150): durable gains in quality of life, depression, and fatigue at 6 months. Caveat: a 2018 trial with an active education control found no between-group difference — part of the benefit is non-specific.</td></tr>
+    <tr><td><strong>CBT for mood</strong></td><td>Repeatedly beats supportive therapy for MS depression (even by phone), gains held at 12 months. Depression is common in MS and worsens adherence and outcomes.</td></tr>
+    <tr><td><strong>Exercise</strong></td><td>Reduces fatigue, improves function and QoL (WHO rates function evidence high-certainty). Favor moderate aerobic/resistance/balance work; avoid overheating and overexertion.</td></tr>
+    <tr><td><strong>Sleep</strong></td><td>Cortisol is tied to circadian rhythm; poor sleep aggravates HPA dysregulation, fatigue, and inflammation. Foundational.</td></tr>
+    <tr><td><strong>Social connection</strong></td><td>Strong support predicts better QoL and favorably shifts the CTRA inflammatory gene profile; isolation worsens it. <em>This is the direct bridge to the next section.</em></td></tr>
   </table>
-  <p>The unifying theme: interventions that downregulate the stress response (mindfulness, CBT, exercise, connection, sleep) help restore HPA–immune balance. They are adjuncts to — never substitutes for — disease-modifying therapy and neurologist-directed care.</p>
 </section>
 
+<!-- ATTACHMENT -->
 <section id="attachment">
-  <h2><span class="num">6.</span>For the dismissive-avoidant husband</h2>
+  <p class="kicker"><span class="idx">06</span> The inner work <span class="rule"></span></p>
+  <h2>For the dismissive-avoidant husband</h2>
   <p class="lede">Your independence is a strength that became a wall. The goal isn't to erase it — it's to learn that closeness doesn't have to cost you your autonomy.</p>
 
-  <h3>What dismissive-avoidant attachment is</h3>
-  <p>Dismissive-avoidant attachment is one of the four adult attachment styles.  People with it prize self-reliance, downplay the importance of close relationships, suppress their own emotional needs, and instinctively create distance when intimacy intensifies.  It typically traces back to early caregiving that was emotionally unavailable  or that subtly taught the child their needs were a burden — so the child adapted by learning not to need. The drive to withdraw isn't a lack of love; underneath it is usually a longing for connection wrapped in layers of self-protection.</p> 
+  <h3>What it is</h3>
+  <p>Dismissive-avoidant attachment prizes self-reliance, downplays close relationships, suppresses one's own needs, and creates distance when intimacy intensifies. It usually traces to early caregiving that taught a child their needs were a burden — so they learned not to need. The urge to withdraw isn't a lack of love; underneath it is often a longing for connection wrapped in self-protection.</p>
 
-  <h3>How it shows up in marriage — "deactivating strategies"</h3>
-  <p>Clinicians call the avoidant toolkit <strong>deactivating strategies</strong>: automatic, nervous-system-level moves  that switch off the attachment system when it gets activated.  Recognizing your own is the first and most important skill:</p>
+  <h3>How it shows up — "deactivating strategies"</h3>
+  <p>These are automatic, nervous-system-level moves that switch off the attachment system when it activates. Naming your own is the first skill:</p>
   <ul>
-    <li><strong>Intellectualizing feelings</strong> — translating "I feel disconnected from you" into a problem to solve rather than an emotion to feel.</li> 
-    <li><strong>Minimizing the relationship's importance</strong> and emphasizing self-sufficiency ("I'm fine on my own").</li>
-    <li><strong>Focusing on a partner's flaws</strong> or past grievances to justify keeping distance.</li>
-    <li><strong>Withdrawing / stonewalling / going quiet</strong> when emotions run high.</li>
-    <li><strong>Dismissing or feeling unwilling to deal with a partner's distress</strong> or bids for closeness.</li>
-    <li><strong>Suppressing your own vulnerable emotions</strong> (sadness, fear) — disconnecting not only from her, but from yourself.</li> 
+    <li><strong>Intellectualizing</strong> feelings into problems to solve.</li>
+    <li><strong>Minimizing</strong> the relationship and emphasizing self-sufficiency.</li>
+    <li><strong>Fault-finding</strong> — focusing on her flaws to justify distance.</li>
+    <li><strong>Withdrawing / stonewalling</strong> when emotions run high.</li>
+    <li><strong>Dismissing her distress</strong> or her bids for closeness.</li>
+    <li><strong>Suppressing your own</strong> sadness or fear — disconnecting from yourself, not just her.</li>
   </ul>
-  <p>Why it happens: when intimacy or a partner's distress activates the attachment system, the avoidant body reacts <em>before</em> the conscious mind — shutting down, numbing, or distancing as automatic self-protection.  With a wife who has MS, her need for support will activate your system often — so this matters more, not less.</p>
+  <p>With a wife who has MS, her need for support will activate your system often — so this matters more, not less.</p>
 
-  <h3>The work: concrete, staged steps</h3>
-  <div class="card purple">
-    <h4>Step 1 — Build awareness (first weeks)</h4>
-    <ul>
-      <li>Notice the deactivation in real time and name it silently: "My system is trying to pull away right now." Naming interrupts the automatic reflex.</li>
-      <li>Keep a brief daily emotion check-in or journal. Avoidant individuals often genuinely struggle to identify what they feel; emotional literacy is a trainable skill.</li>
-      <li>Track your triggers: which bids for closeness or expressions of her distress make you want to retreat?</li>
-    </ul>
+  <h3>The work, in stages</h3>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h4>Build awareness</h4>
+      <ul>
+        <li>Catch the pull-away in real time and name it silently: "My system wants to retreat right now." Naming interrupts the reflex.</li>
+        <li>Keep a brief daily emotion check-in — emotional literacy is trainable.</li>
+        <li>Track which bids or expressions of her distress trigger the urge to withdraw.</li>
+      </ul></div>
+    <div class="step"><div class="n">2</div><h4>Build regulation</h4>
+      <ul>
+        <li>Use body-based tools — slow breathing, grounding — to stay regulated <em>during</em> a hard moment instead of shutting down.</li>
+        <li>Take a break <strong>without abandoning</strong>: "I want to keep talking — I need ten minutes to settle, then I'm back." The promise to return (and keeping it) is what separates a regulated pause from stonewalling.</li>
+      </ul></div>
+    <div class="step"><div class="n">3</div><h4>Stay present &amp; co-regulate</h4>
+      <ul>
+        <li>Share one real feeling a day — vulnerability in survivable doses.</li>
+        <li>Ask: <strong>"Do you want comfort, or solutions?"</strong> — then deliver what she asked for.</li>
+        <li>Co-regulation is lending your steady nervous system to hers: sitting close, a hand on her back, staying in the room. Foreign for an avoidant partner — and exactly what rebuilds security.</li>
+      </ul></div>
   </div>
-  <div class="card purple">
-    <h4>Step 2 — Build regulation (ongoing)</h4>
-    <ul>
-      <li>Because withdrawal is a nervous-system response, use body-based tools — slow breathing, grounding, a brief mindfulness practice — to stay regulated <em>during</em> a hard moment instead of shutting down.</li> 
-      <li>If you genuinely need a pause, <strong>take a break without abandoning</strong>: "I want to keep talking about this — I need ten minutes to settle, then I'm coming back." This honors your need for space <em>and</em> her need for security. The difference between a regulated break and stonewalling is the explicit promise to return — and keeping it.</li>
-    </ul>
-  </div>
-  <div class="card purple">
-    <h4>Step 3 — Stay present & offer co-regulation</h4>
-    <ul>
-      <li>Practice vulnerability in small, survivable doses: share one real feeling per day.</li>
-      <li>Learn the difference between fixing and being with. When she's struggling, your calm, attuned presence <em>is</em> the help. Try the script: <strong>"Do you want comfort, or do you want solutions?"</strong>  — then deliver what she actually asked for.</li>
-      <li>Co-regulation is simply lending your steady nervous system to hers — sitting close, a hand on her back, staying in the room. For an avoidant partner this feels foreign; it is also exactly what rebuilds security.</li>
-    </ul>
-  </div>
-  <p>Realistic expectations: rewiring is gradual and non-linear. You'll have stretches where everything feels different, then a hard conversation snaps you back to old patterns for a few days. That's not failure — that's what change actually looks like.  The aim is greater emotional flexibility and less reactivity over time, not perfection.</p> 
-
-  <h3>Therapy that fits the problem</h3>
-  <div class="card good">
-    <strong>Emotionally Focused Therapy (EFT)</strong> — developed by the late Dr. Sue Johnson — is the best-matched couples model here because it is built directly on attachment science. It helps partners map their negative cycle (e.g., she pursues / he withdraws), then helps the withdrawer become more accessible, responsive, and engaged. EFT has a strong evidence base: foundational outcome research found roughly 70–73% of couples moved from distress to recovery, and Rathgeber et al.'s 2019 meta-analysis confirmed significant reductions in relationship distress.  It has been specifically applied to couples facing <em>chronic illness</em>, where its goals are to normalize and validate each partner's experience  and help them meet each other's needs for safety and comfort despite the illness.
-  </div>
-  <ul>
-    <li><strong>Couples therapy:</strong> EFT (find a certified therapist via the ICEEFT directory) or the <em>Hold Me Tight</em> program/workbook.</li>
-    <li><strong>Individual therapy:</strong> attachment-based therapy, EFIT (Emotionally Focused Individual Therapy), or somatic approaches that address how withdrawal lives in the body; DBT/ACT skills for distress tolerance and staying present.</li>
-  </ul>
+  <p>Rewiring is gradual and non-linear. You'll have stretches where everything feels different, then a hard conversation snaps you back for a few days. That's not failure — that's what change looks like.</p>
 </section>
 
+<!-- CAREGIVING -->
 <section id="caregiving">
-  <h2><span class="num">7.</span>Being a supportive partner to a spouse with MS</h2>
+  <p class="kicker"><span class="idx">07</span> The practical load <span class="rule"></span></p>
+  <h2>Supporting a spouse with MS</h2>
 
-  <h3>Understand fatigue and invisible symptoms — and believe them</h3>
-  <p>Many MS symptoms are invisible: crushing fatigue, numbness, pain, cognitive fog, bladder issues, heat sensitivity. People with MS repeatedly report feeling "not believed," especially by partners who expect them to "push through." The single most important thing partners do, according to people living with MS, is <strong>start by believing them.</strong>  Fatigue is real and can change day to day; a last-minute cancellation is not laziness and is not a verdict on your relationship.</p> 
+  <h3>Believe the invisible symptoms</h3>
+  <p>Fatigue, numbness, pain, cognitive fog, heat sensitivity — most MS symptoms are invisible, and people with MS repeatedly report not feeling believed. The single most valued thing partners do is <strong>start by believing them.</strong> A last-minute cancellation is not laziness and not a verdict on the relationship.</p>
   <ul>
-    <li><strong>Don't minimize.</strong> Avoid "but you look fine" or "everyone gets tired." Validation comes first.</li>
-    <li><strong>Don't over-function either.</strong> Wrapping her in cotton wool and forbidding her to lift a finger breeds resentment; most people with MS want to live as normally as possible and will ask when they need help.  Follow her lead.</li>
-    <li><strong>Plan around energy.</strong> Help her "budget" energy for what matters; offer backup at-home options; account for heat and hydration.</li> 
-    <li><strong>Use the LISTEN–SUMMARIZE–ACT loop</strong> and ask whether she wants comfort or solutions before jumping in.</li>
+    <li><strong>Don't minimize</strong> ("but you look fine"). Validate first.</li>
+    <li><strong>Don't over-function</strong> either — smothering breeds resentment. Most people with MS want to live normally and will ask when they need help. Follow her lead.</li>
+    <li><strong>Plan around energy</strong> — budget it for what matters; account for heat and hydration.</li>
   </ul>
 
-  <h3>Practical caregiving without resentment</h3>
-  <p>Caregiver burnout is a documented risk — exhaustion, irritability, sleep and appetite changes, withdrawal, and, tellingly, <strong>resentment</strong> toward the person being cared for.  For an avoidant partner the danger is doubled: the instinct under strain is to withdraw and stuff feelings until they "burn out."  Protect against it deliberately:</p>
+  <h3>Caregiving without resentment</h3>
+  <p>Burnout is documented — exhaustion, irritability, withdrawal, and resentment toward the person being cared for. For an avoidant partner the danger doubles: the instinct under strain is to withdraw and stuff feelings until they burn out. Guard against it deliberately:</p>
   <ul>
-    <li><strong>Care for yourself first-aid-style.</strong> "An effective caregiving relationship depends on the physical and emotional health of both partners" (National MS Society). Sleep, exercise, your own friendships and hobbies are not selfish — they sustain your capacity to show up.</li>
-    <li><strong>Share the load.</strong> Don't try to do everything;  accept and arrange respite and outside help (see Resources).</li>
-    <li><strong>Keep the non-MS relationship alive.</strong> Protect time for who you were as a couple "before" MS. Don't let the marriage collapse into a patient–nurse dynamic.</li> 
-    <li><strong>Name your own feelings to a safe outlet</strong> — a counselor,  a Well Spouse Association group — rather than letting them leak out as withdrawal or sarcasm.</li>
+    <li><strong>Sustain yourself.</strong> "An effective caregiving relationship depends on the physical and emotional health of both partners" (National MS Society). Your sleep, exercise, and friendships are not selfish.</li>
+    <li><strong>Share the load</strong> — arrange respite and outside help.</li>
+    <li><strong>Keep the non-MS relationship alive</strong> — don't let the marriage collapse into a patient–nurse dynamic.</li>
+    <li><strong>Vent to a safe outlet</strong> — a counselor or spouse-caregiver group — rather than letting it leak out as withdrawal or sarcasm.</li>
   </ul>
-
-  <h3>The full-circle link to Topic 1</h3>
-  <div class="card">
-    Here is why your inner work is medical, not merely marital. <strong>Interpersonal stress has been positively associated with brain lesions on MRI in people with MS</strong>  (Mohr et al., 2000), and a hostile, high-conflict, emotionally distant home is a chronic stressor of exactly the kind linked to inflammatory activity. By contrast, secure connection and strong social support buffer the stress response and favorably shift inflammatory gene expression. <strong>Every time you stay present instead of withdrawing, de-escalate instead of stonewalling, and make her feel safe instead of alone, you are lowering her chronic-stress load — and that load is plausibly part of her disease environment.</strong> Reducing relationship stress is one of the few things in MS that is fully within a couple's control.
-  </div>
 </section>
 
+<!-- WIFE -->
 <section id="wife">
-  <h2><span class="num">8.</span>What the wife with MS may need — emotionally and practically</h2>
-  <div class="res-grid">
+  <p class="kicker"><span class="idx">08</span> From her side <span class="rule"></span></p>
+  <h2>What she may need</h2>
+  <div class="needs">
     <div class="col">
-      <h4>Emotionally</h4>
+      <h4><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#7a4fb0" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.4 12 21 12 21z"/></svg> Emotionally</h4>
       <ul>
-        <li>To be <strong>believed</strong> and validated, especially about invisible symptoms.</li>
+        <li>To be <strong>believed</strong> and validated about invisible symptoms.</li>
         <li>A partner, not a pitier — connection over rescue.</li>
-        <li>Your steady emotional presence during fear about the future (uncertainty is one of MS's heaviest burdens).</li> 
-        <li>Room for grief about losses without you rushing to fix it.</li>
-        <li>Reassurance she is not "a burden" — a fear many people with MS carry silently.</li> 
+        <li>Your steady presence during fear about the future.</li>
+        <li>Room to grieve losses without being rushed to "fix it."</li>
+        <li>Reassurance she is not "a burden" — a fear many carry silently.</li>
       </ul>
     </div>
     <div class="col">
-      <h4>Practically</h4>
+      <h4><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#1f8aa6" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg> Practically</h4>
       <ul>
-        <li>Help that is <strong>offered, not forced</strong>, and calibrated to the day's energy.</li>
-        <li>Flexibility — willingness to change plans for fluctuating symptoms and heat.</li> 
-        <li>Shared logistics (appointments, meds, household) without taking over her autonomy.</li>
-        <li>Attending appointments with her when she wants it — it consistently strengthens couples' understanding.</li> 
-        <li>Adapted intimacy: open communication about sex,  creativity, and non-sexual closeness (e.g., sensate-focus exercises).</li> 
+        <li>Help that is <strong>offered, not forced</strong>, calibrated to the day's energy.</li>
+        <li>Flexibility for fluctuating symptoms and heat.</li>
+        <li>Shared logistics without taking over her autonomy.</li>
+        <li>Attending appointments together when she wants it.</li>
+        <li>Open communication about intimacy and non-sexual closeness.</li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- RESOURCES -->
 <section id="resources">
-  <h2><span class="num">9.</span>Curated resources</h2>
+  <p class="kicker"><span class="idx">09</span> Where to turn <span class="rule"></span></p>
+  <h2>Curated resources</h2>
 
-  <h3>MS organizations & information</h3>
+  <h3>MS organizations &amp; information</h3>
   <div class="res-grid">
-    <div class="col">
-      <h4>National MS Society (US)</h4>
-      <p>MS Navigator program (information, emotional-support resources, wellness strategies, crisis help), dedicated carepartner resources, and virtual support groups.</p>
-      <a href="https://www.nationalmssociety.org">nationalmssociety.org</a><br>
-      <span class="src">Carepartners: /managing-ms/for-carepartners · MS Navigator program</span>
-    </div>
-    <div class="col">
-      <h4>MS Trust (UK)</h4>
-      <p>Plain-language guides including "10 ways to help your partner if they have MS" and managing stress in MS.</p>
-      <a href="https://mstrust.org.uk">mstrust.org.uk</a>
-    </div>
-    <div class="col">
-      <h4>Can Do MS</h4>
-      <p>Programs and webinars on relationships, intimacy, and wellness for people with MS and their partners.</p>
-      <a href="https://cando-ms.org">cando-ms.org</a>
-    </div>
-    <div class="col">
-      <h4>Multiple Sclerosis Foundation (MS Focus)</h4>
-      <p>Support groups, a homecare/respite grant program, and education. Helpline: 888-673-6287.</p>
-      <a href="https://msfocus.org">msfocus.org</a>
-    </div>
+    <div class="col"><h4>National MS Society (US)</h4><p>MS Navigator support, carepartner resources, virtual support groups.</p><a href="https://www.nationalmssociety.org">nationalmssociety.org →</a></div>
+    <div class="col"><h4>MS Trust (UK)</h4><p>Plain-language guides incl. "10 ways to help your partner if they have MS."</p><a href="https://mstrust.org.uk">mstrust.org.uk →</a></div>
+    <div class="col"><h4>Can Do MS</h4><p>Programs on relationships, intimacy, and wellness for couples.</p><a href="https://cando-ms.org">cando-ms.org →</a></div>
+    <div class="col"><h4>MS Focus Foundation</h4><p>Support groups, respite grants. Helpline 888-673-6287.</p><a href="https://msfocus.org">msfocus.org →</a></div>
   </div>
 
   <h3>Caregiver / carepartner support</h3>
   <div class="res-grid">
-    <div class="col">
-      <h4>Well Spouse Association</h4>
-      <p>Peer support specifically for spousal caregivers of people with chronic illness; helps manage stress and resentment. 732-577-8899.</p>
-      <a href="https://wellspouse.org">wellspouse.org</a>
-    </div>
-    <div class="col">
-      <h4>Family Caregiver Alliance</h4>
-      <p>CareNav™ dashboard, an MS Caregiver Resource Guide, and state-by-state services.</p>
-      <a href="https://www.caregiver.org">caregiver.org</a>
-    </div>
-    <div class="col">
-      <h4>Caregiver Action Network</h4>
-      <p>Education, peer support, a Help Desk, and MS-specific caregiver tips.</p>
-      <a href="https://www.caregiveraction.org">caregiveraction.org</a>
-    </div>
-    <div class="col">
-      <h4>VA MS Centers of Excellence</h4>
-      <p>"Caring for the Caregiver" and caregiver-wellness resources (useful to all, not only veterans).</p>
-      <a href="https://www.va.gov/MS">va.gov/MS</a>
-    </div>
-  </div>
-
-  <h3>Therapy & attachment / EFT</h3>
-  <div class="res-grid">
-    <div class="col">
-      <h4>ICEEFT — Find an EFT Therapist</h4>
-      <p>Free worldwide directory of trained Emotionally Focused Therapy practitioners (individual, couple, family). Also lists Hold Me Tight® programs (including Hold Me Tight Online and "Healing Hearts Together" for couples facing illness).</p>
-      <a href="https://iceeft.com">iceeft.com</a>
-    </div>
-    <div class="col">
-      <h4>Psychology Today therapist finder</h4>
-      <p>Filter for "Emotionally Focused," "attachment-based," and couples therapy; useful for finding clinicians experienced with chronic illness.</p>
-      <a href="https://www.psychologytoday.com">psychologytoday.com</a>
-    </div>
+    <div class="col"><h4>Well Spouse Association</h4><p>Peer support for spousal caregivers of chronically ill partners.</p><a href="https://wellspouse.org">wellspouse.org →</a></div>
+    <div class="col"><h4>Family Caregiver Alliance</h4><p>CareNav™ dashboard and an MS Caregiver Resource Guide.</p><a href="https://www.caregiver.org">caregiver.org →</a></div>
+    <div class="col"><h4>Caregiver Action Network</h4><p>Education, peer support, and a Help Desk.</p><a href="https://www.caregiveraction.org">caregiveraction.org →</a></div>
+    <div class="col"><h4>VA MS Centers of Excellence</h4><p>"Caring for the Caregiver" wellness resources (useful to all).</p><a href="https://www.va.gov/MS">va.gov/MS →</a></div>
   </div>
 
   <h3>Books</h3>
   <ul>
-    <li><strong><em>Hold Me Tight: Seven Conversations for a Lifetime of Love</em></strong> — Sue Johnson. The accessible EFT guide for couples (also a workbook and an online program).</li>
-    <li><strong><em>Attachment Theory in Practice</em></strong> and <strong><em>Love Sense</em></strong> — Sue Johnson. Deeper dives into the science of connection.</li>
-    <li><strong><em>Attached</em></strong> — Amir Levine & Rachel Heller. The most popular primer on adult attachment styles, including practical guidance for avoidant patterns.</li>
-    <li><strong><em>A Primer for Emotionally Focused Individual Therapy (EFIT)</em></strong> — Johnson & Campbell. For individual attachment work.</li>
+    <li><strong><em>Love Sense</em></strong> &amp; <strong><em>Attachment Theory in Practice</em></strong> — Sue Johnson. Deeper dives into the science of connection.</li>
+    <li><strong><em>Attached</em></strong> — Levine &amp; Heller. The popular primer on adult attachment, with guidance for avoidant patterns.</li>
   </ul>
 
-  <h3>Apps & online communities</h3>
+  <h3>Apps &amp; communities</h3>
   <ul>
-    <li><strong>Mindfulness/stress:</strong> Insight Timer (free), Calm, Headspace — for daily regulation and brief practices the husband can use before hard conversations and the wife can use for stress/fatigue.</li>
+    <li><strong>Insight Timer / Calm / Headspace</strong> — daily regulation and brief practices before hard conversations.</li>
     <li><strong>MyMSTeam</strong> — free social network for people with MS and their support partners.</li>
-    <li><strong>National MS Society virtual support groups</strong> — including dedicated family/carepartner groups ("The MEND: Taking Care of Ourselves").</li>
-    <li><strong>Lotsa Helping Hands</strong> — organize a care calendar and rally practical help from friends/family.</li>
+    <li><strong>Lotsa Helping Hands</strong> — organize a care calendar and rally practical help.</li>
   </ul>
 </section>
 
+</main>
+
 <footer>
   <div class="disclaimer">
-    <strong>Disclaimer & evidence notes.</strong> This report is for education and is not medical or psychological advice; it does not replace care from a neurologist, therapist, or physician. The stress–MS link is real but characterized by the most rigorous 2024 meta-analysis as a "minor to modest" effect, and it must never be used to blame a patient for relapses. Mohr's 2012 MRI benefit faded after treatment ended, and the 2018 active-control MBSR trial found no advantage over an education control — so behavioral stress reduction is a supportive adjunct, not a disease-modifying therapy. Disease-modifying drugs remain the foundation of MS treatment.
+    <b>Disclaimer &amp; evidence notes.</b> This report is educational and is not medical or psychological advice; it does not replace care from a neurologist, therapist, or physician. The stress–MS link is characterized by the most rigorous 2024 meta-analysis as "minor to modest," and must never be used to blame a patient for relapses. Mohr's 2012 MRI benefit faded after treatment ended, and a 2018 active-control MBSR trial found no advantage over education — so behavioral stress reduction is a supportive adjunct, not a disease-modifying therapy. Disease-modifying drugs remain the foundation of MS treatment.
   </div>
-  <p style="margin-top:16px;">Key sources: Knezevic et al., <em>Int. J. Molecular Sciences</em> (2025); Miller, Cohen & Ritchey, <em>Health Psychology</em> (2002); Cole, "Conserved Transcriptional Response to Adversity"; Song et al., <em>JAMA</em> (2018); Buljevac et al., <em>BMJ</em> (2003); Mohr et al., <em>BMJ</em> (2004) and <em>Neurology</em> (2000, 2012); von Drathen et al., <em>Brain, Behavior, and Immunity</em> (2024); Grossman et al., <em>Neurology</em> (2010); Senders et al., <em>Multiple Sclerosis Journal</em> (2018); Sue Johnson / ICEEFT; National MS Society, MS Trust, Can Do MS, VA MS Centers of Excellence. Compiled June 2026.</p>
+  <p style="margin-top:16px;">Key sources: Knezevic et al., <em>Int. J. Molecular Sciences</em> (2025); Miller, Cohen &amp; Ritchey, <em>Health Psychology</em> (2002); Cole (CTRA); Song et al., <em>JAMA</em> (2018); Buljevac et al., <em>BMJ</em> (2003); Mohr et al., <em>BMJ</em> (2004), <em>Neurology</em> (2000, 2012); von Drathen et al., <em>Brain, Behavior, and Immunity</em> (2024); Grossman et al., <em>Neurology</em> (2010); Senders et al. (2018); National MS Society, MS Trust, Can Do MS, VA MS Centers of Excellence. Compiled June 2026.</p>
 </footer>
 
-</main>
+<script>
+// ---------- scroll progress ----------
+const prog=document.getElementById('progress');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  prog.style.width=pct+'%';
+},{passive:true});
+
+// ---------- reveal sections + trigger their animations ----------
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.id==='mechanism') document.getElementById('hpa').classList.add('run');
+      if(e.target.id==='autoimmune') drawLolli();
+      if(e.target.id==='ms'){ runCounters(); drawMsBar(); }
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.18});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+
+// ---------- nav active state ----------
+const navlinks=[...document.querySelectorAll('nav.bar a')];
+const secs=navlinks.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  let i=secs.findIndex((s,k)=>{const r=s.getBoundingClientRect();return r.top<=120 && (k===secs.length-1||secs[k+1].getBoundingClientRect().top>120);});
+  navlinks.forEach(a=>a.classList.remove('active'));
+  if(i>=0) navlinks[i].classList.add('active');
+},{passive:true});
+
+// ---------- interactive cytokine toggle ----------
+const toggle=document.getElementById('toggle');
+const bars=document.querySelectorAll('#bars .fill');
+const cap=document.getElementById('cap');
+function setBars(){
+  const inflamed=document.body.classList.contains('inflamed');
+  bars.forEach(b=>{
+    const v=inflamed?+b.dataset.infl:+b.dataset.calm;
+    b.style.width=v+'%';
+    const isBrake=b.parentElement.parentElement.querySelector('.name').textContent.includes('brake');
+    // brakes are good when high; color green when high, flame when suppressed
+    if(isBrake){ b.style.background=v>50?'linear-gradient(90deg,#1f8a5b,#48c08a)':'linear-gradient(90deg,#e0571a,#f5a26b)'; }
+    else { b.style.background=v>55?'linear-gradient(90deg,#e0571a,#f5a26b)':'linear-gradient(90deg,#1f8aa6,#5bc4dc)'; }
+    b.parentElement.parentElement.querySelector('.val').textContent=v;
+  });
+  cap.innerHTML=inflamed
+    ? '<b>Chronic stress:</b> receptor resistance lets NF-κB run unchecked. Pro-inflammatory cytokines surge while the IL-10 and regulatory-T-cell brakes fall — an environment that favors autoimmunity.'
+    : '<b>Acute stress:</b> a cortisol pulse keeps inflammation in check and the anti-inflammatory brakes (IL-10, regulatory T-cells) high. Toggle to see what sustained stress does.';
+}
+function flip(){ document.body.classList.toggle('inflamed'); setBars(); }
+toggle.addEventListener('click',flip);
+toggle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+// init bars when the mechanism section appears
+new IntersectionObserver((es,obs)=>{es.forEach(e=>{if(e.isIntersecting){setBars();obs.disconnect();}});},{threshold:.3})
+  .observe(document.getElementById('mechanism'));
+
+// ---------- count-up stats ----------
+function runCounters(){
+  document.querySelectorAll('#stats .big').forEach(el=>{
+    const to=+el.dataset.to, dec=+(el.dataset.dec||0), suf=el.dataset.suffix||'';
+    if(reduce){el.textContent=to.toFixed(dec)+suf;return;}
+    const dur=1100, t0=performance.now();
+    function tick(now){
+      const p=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=(to*e).toFixed(dec)+suf;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+// ---------- lollipop chart (hazard ratios) ----------
+function drawLolli(){
+  const svg=document.getElementById('lolli'); if(svg.dataset.done)return; svg.dataset.done=1;
+  const W=720,H=220,padL=240,padR=70,padT=18,padB=34;
+  const data=[
+    {l:'Any autoimmune disease',hr:1.36,ci:[1.33,1.40]},
+    {l:'≥3 autoimmune diseases',hr:1.61,ci:[1.43,1.81]},
+    {l:'Any, among PTSD',hr:1.46,ci:[1.32,1.61]},
+    {l:'≥3, among PTSD',hr:2.29,ci:[1.72,3.04]},
+  ];
+  const xmin=1,xmax=3.2;
+  const x=v=>padL+(v-xmin)/(xmax-xmin)*(W-padL-padR);
+  const ns='http://www.w3.org/2000/svg';
+  const mk=(t,a)=>{const e=document.createElementNS(ns,t);for(k in a)e.setAttribute(k,a[k]);return e;};
+  // gridlines + ticks
+  [1,1.5,2,2.5,3].forEach(t=>{
+    svg.appendChild(mk('line',{x1:x(t),y1:padT,x2:x(t),y2:H-padB,stroke:'#dde6ed','stroke-width':t===1?1.5:1,'stroke-dasharray':t===1?'':'3 3'}));
+    const tx=mk('text',{x:x(t),y:H-padB+16,'text-anchor':'middle',class:'axis'});tx.textContent=t.toFixed(1);svg.appendChild(tx);
+  });
+  const refl=mk('text',{x:x(1),y:padT-4,'text-anchor':'middle',class:'reflbl'});refl.textContent='HR = 1 (no added risk)';svg.appendChild(refl);
+  const band=(H-padT-padB)/data.length;
+  data.forEach((d,i)=>{
+    const cy=padT+band*i+band/2;
+    const lab=mk('text',{x:padL-12,y:cy+4,'text-anchor':'end',class:'axis'});lab.textContent=d.l;svg.appendChild(lab);
+    const ci=mk('line',{x1:x(d.ci[0]),y1:cy,x2:x(d.ci[1]),y2:cy,class:'ci-line'});svg.appendChild(ci);
+    const stem=mk('line',{x1:x(1),y1:cy,x2:x(1),y2:cy,class:'lollipop-stem'});svg.appendChild(stem);
+    const dot=mk('circle',{cx:x(1),cy:cy,r:0,class:'lollipop-dot'});svg.appendChild(dot);
+    const val=mk('text',{x:x(1),y:cy-10,'text-anchor':'middle',class:'reflbl',fill:'#5a3787','font-weight':'700'});
+    val.textContent=d.hr.toFixed(2);svg.appendChild(val);
+    if(reduce){stem.setAttribute('x2',x(d.hr));dot.setAttribute('cx',x(d.hr));dot.setAttribute('r',6);val.setAttribute('x',x(d.hr));return;}
+    const t0=performance.now()+i*120,dur=850;
+    function tick(now){
+      const p=Math.max(0,Math.min(1,(now-t0)/dur)),e=1-Math.pow(1-p,3);
+      const cx=x(1)+(x(d.hr)-x(1))*e;
+      stem.setAttribute('x2',cx);dot.setAttribute('cx',cx);dot.setAttribute('r',6*e);val.setAttribute('x',cx);
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+// ---------- MS bar chart (Mohr 2012) ----------
+function drawMsBar(){
+  const svg=document.getElementById('msbar'); if(svg.dataset.done)return; svg.dataset.done=1;
+  const W=720,H=280,padL=54,padR=20,padT=20,padB=70;
+  const groups=[
+    {l:'Free of new Gd+ lesions',a:54.7,b:76.8},
+    {l:'Free of new/enlarging T2',a:42.7,b:69.5},
+  ];
+  const ns='http://www.w3.org/2000/svg';
+  const mk=(t,a)=>{const e=document.createElementNS(ns,t);for(k in a)e.setAttribute(k,a[k]);return e;};
+  const plotH=H-padT-padB, y=v=>padT+plotH-(v/100*plotH);
+  // y grid
+  [0,25,50,75,100].forEach(t=>{
+    svg.appendChild(mk('line',{x1:padL,y1:y(t),x2:W-padR,y2:y(t),stroke:'#dde6ed','stroke-width':1}));
+    const tx=mk('text',{x:padL-8,y:y(t)+4,'text-anchor':'end',class:'axis'});tx.textContent=t+'%';svg.appendChild(tx);
+  });
+  const gw=(W-padL-padR)/groups.length, bw=58, gap=26;
+  groups.forEach((g,i)=>{
+    const gx=padL+gw*i+gw/2;
+    const xa=gx-bw-gap/2, xb=gx+gap/2;
+    [[xa,g.a,'barA','Wait-list'],[xb,g.b,'barB','Therapy']].forEach(([bx,val,cls])=>{
+      const rect=mk('rect',{x:bx,y:y(0),width:bw,height:0,rx:6,class:cls});svg.appendChild(rect);
+      const lbl=mk('text',{x:bx+bw/2,y:y(0)-8,'text-anchor':'middle',class:'reflbl','font-weight':'700'});
+      lbl.textContent=val+'%';svg.appendChild(lbl);
+      if(reduce){rect.setAttribute('y',y(val));rect.setAttribute('height',plotH-(y(val)-padT)-(H-padB-y(0))*0);rect.setAttribute('height',y(0)-y(val));lbl.setAttribute('y',y(val)-8);return;}
+      const t0=performance.now()+i*150,dur=900;
+      function tick(now){
+        const p=Math.max(0,Math.min(1,(now-t0)/dur)),e=1-Math.pow(1-p,3);
+        const hh=(y(0)-y(val))*e;
+        rect.setAttribute('y',y(0)-hh);rect.setAttribute('height',hh);lbl.setAttribute('y',y(0)-hh-8);
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+    const gl=mk('text',{x:gx,y:H-padB+22,'text-anchor':'middle',class:'axis'});gl.textContent=g.l;svg.appendChild(gl);
+  });
+  // legend
+  const lg=[['Wait-list control','barA',padL+10],['Stress-management therapy','barB',padL+170]];
+  lg.forEach(([t,cls,lx])=>{
+    svg.appendChild(mk('rect',{x:lx,y:H-26,width:14,height:14,rx:3,class:cls}));
+    const tx=mk('text',{x:lx+20,y:H-15,class:'axis'});tx.textContent=t;svg.appendChild(tx);
+  });
+}
+</script>
 </body>
 </html>
